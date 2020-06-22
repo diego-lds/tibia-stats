@@ -18,7 +18,7 @@ export default class AutoComplete extends React.Component {
     const {items} = this.state;
     let value = e.target.value;
     let suggestions = [];
-    if(value.length >= 2){
+    if(items && value.length >= 2){
       let filteredList = items.filter(item => item.toLowerCase().includes(value.toLowerCase()));
       suggestions = filteredList.sort(function (a,b){
         return a.length - b.length;
