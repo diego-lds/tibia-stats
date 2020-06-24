@@ -12,13 +12,12 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems, secondaryListItems } from './listItems';
-import AutoComplete from './components/AutoComplete';
-
+import { mainListItems } from './listItems';
+import {myRoutes} from './routes';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -123,9 +122,9 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
+  <Router>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -157,15 +156,14 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+
+          <List>{mainListItems}</List>
+          
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <AutoComplete />
-
-
-
+          {myRoutes}
           <Grid container spacing={2}>
             <Grid item xs={12} md={8} lg={9}>
             </Grid>
@@ -176,5 +174,6 @@ export default function Dashboard() {
         </Container>
       </main>
     </div>
+    </Router>
   );
 }
