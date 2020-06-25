@@ -1,6 +1,9 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import formatterCreatureName from '../utils/formatterCreatureName';
+
+const baseUrl = "https://static.tibia.com/images/library/";
 
 const parseLoot = (item, total) => ({
     name: item.itemName,
@@ -17,6 +20,7 @@ export default props => {
 
      const total = parseInt(kills);
      const chartData = loot.map(item => parseLoot(item, total));
+     const creatureName = formatterCreatureName(name);
      
     const options = {
         chart: {
@@ -34,7 +38,13 @@ export default props => {
             }
           },
         title: {
-          text: name,
+          useHTML: true,
+          text: `<div style="display:grid;text-align:center">
+          <span>${name}</span>
+          <div>
+            <img src="assets/creatures/${creatureName}.gif" height="64" width="64" alt=""></img>
+          </div>
+                </div>`,
         },
         series: [{
             name: `${name}'s loot`,
@@ -44,8 +54,7 @@ export default props => {
 
 
     return(
-        <div>
-               <HighchartsReact className="teste" highcharts={Highcharts} options={options} />
-        </div>
+               <HighchartsReact highcharts={Highcharts} options={options} />
+      
     )
 }

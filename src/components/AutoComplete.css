@@ -1,6 +1,5 @@
 
 .wrap-input{
-   
     border: none;
     box-shadow: 0 0 0 1px rgba(0,0,0, .1),0 2px 4px 1px rgba(0,0,0, .18);
     font-family: Arial;
@@ -21,23 +20,33 @@
 
 .wrap-input ul {
     list-style-type: none;
-    text-align: left;
-    margin: 0;
-    padding: 0;
     border-top: 1px solid grey;
+    text-align: left;
+    margin-top: 0;
+    padding: 0;
 }
 
 .wrap-input ul::before {
-  content: "";
+    content: "";
+  }
+
+.wrap-input ul li {
+    height: 70px;
+    padding: 5px;
+    cursor: pointer;
 }
 
-.wrap-input li {
-    padding: 10px 5px;
-    cursor: pointer;
+
+.wrap-input ul img {
+    float: right;
 }
 
 
 .wrap-input li:hover {
     text-decoration: underline;
     background-color: rgba(128, 128, 128, 0.20)
+}
+
+.loot-stats{
+    display: flex;
 }

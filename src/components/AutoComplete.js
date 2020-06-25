@@ -1,6 +1,9 @@
 import React from 'react';
 import './AutoComplete.css';
 
+import formatterCreatureName from '../utils/formatterCreatureName';
+
+
 export default class AutoComplete extends React.Component {
   constructor(props){
     super(props);
@@ -33,16 +36,32 @@ export default class AutoComplete extends React.Component {
     }));
   }
 
+  handleGetImage = creatureName => {
+    
+    const formattedName = formatterCreatureName(creatureName);
+    console.log(creatureName, formattedName)
+    return (
+     
+        <img className="suggestion-image" src={`assets/creatures/${formattedName}.gif`} alt="" />   
+    )
+  }
+
   renderSuggestions(){
     const {suggestions} = this.state;
     if(suggestions.length > 0){
       return (
         <ul>
-          {suggestions.map((item, index) => 
+          {suggestions.map((suggestion, index) => 
           <li
-            onClick={() => this.handleSuggestedSelected(item)} 
-            key={index}>{item}
+            onClick={() => this.handleSuggestedSelected(suggestion)} 
+            key={index}
+            >
+              <span>
+                {suggestion}
+              </span>
+            {/* {this.handleGetImage(suggestion)} */}
            </li>
+           
            )}
         </ul>
       )

@@ -8,20 +8,5 @@
  
 }
 
-.loot-container{
-  display: flex;
-}
 
-.loot-content{
-  display: flex;
-}
 
-.column-search{
-  width: 200px;
-  padding: 10px;
-}
-
-.column-display{
-  padding: 10px;
-  
-}
