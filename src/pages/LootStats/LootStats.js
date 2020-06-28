@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import AutoComplete from '../components/AutoComplete';
+import AutoComplete from '../../components/AutoComplete';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
-import Chart from '../components/Chart';
+import Chart from '../../components/Chart';
 
 import './LootStats.css';
 
@@ -12,7 +12,6 @@ function LootStats() {
 
 const [listCreatures, setListCreatures] = useState([]);
 const [creatureLoot, setCreatureLoot] = useState([])
-const [showSpinner, setShowSpinner ] = useState(false);
 
   useEffect(() => {
     fetchListCreatures();
