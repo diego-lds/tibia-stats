@@ -31,22 +31,16 @@
   }
 
 .wrap-input ul li {
-    height: 70px;
+    height: 30px;
     padding: 5px;
     cursor: pointer;
 }
-
 
 .wrap-input ul img {
     float: right;
 }
 
-
 .wrap-input li:hover {
     text-decoration: underline;
     background-color: rgba(128, 128, 128, 0.20)
-}
-
-.loot-stats{
-    display: flex;
 }

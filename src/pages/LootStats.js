@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import AutoComplete from '../components/AutoComplete';
 import axios from 'axios';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 import Chart from '../components/Chart';
 
-import formatterCreatureName from '../utils/formatterCreatureName';
+import './LootStats.css';
 
 function LootStats() {
 
 const [listCreatures, setListCreatures] = useState([]);
 const [creatureLoot, setCreatureLoot] = useState([])
+const [showSpinner, setShowSpinner ] = useState(false);
 
   useEffect(() => {
     fetchListCreatures();
@@ -26,36 +29,40 @@ const [creatureLoot, setCreatureLoot] = useState([])
   } 
 
   const handleSelect = value => {
+    
     fetchCreatureLoot(value)
-   
+
   }
 
-  const renderContainer = () => {
-    const loot = creatureLoot.loot2;
+  const renderChart = () => {
+    
     if(loot){
-      return (
-        <div style={{width:'75%'}}>
-          <Chart data={loot}/>
-        </div>
-      )
-    }else{
-      return null;
-    }    
+      return <Chart className="teste" data={loot || []}></Chart>
+    }else  {
+      if(listCreatures.length > 0 && creatureLoot.length > 0){
+          return <CircularProgress />
+      } else return null
+    }
+
+   
+    
+
   }
-  
+
+  const loot = creatureLoot.loot2;
+  console.log(creatureLoot)
   return (
-      <div className="loot-stats">
-          {listCreatures.length > 0 
+      <div>
+          {listCreatures.length > 0
           ? (
-            <div style={{width:'25%'}}>
-              <AutoComplete 
-                data={listCreatures}
-                onSelect={handleSelect} />
+            <div>
+                <AutoComplete 
+                  data={listCreatures}
+                  onSelect={handleSelect} />
+                  {renderChart()}
             </div>
           )
-          : <span>Carregando...</span>}
-      
-          {renderContainer()}
+          : <CircularProgress />}      
       </div>
     );
 }
