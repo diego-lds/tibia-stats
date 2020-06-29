@@ -1,4 +1,4 @@
-import React, { defaultProps } from 'react';
+import React from 'react';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/Menuitem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -14,11 +14,12 @@ function SelectComponent(props){
 
   const useStyles = makeStyles(theme => ({
     formControl: {
-      margin: theme.spacing(1),
       minWidth: 120
     },
     selectEmpty: {
-      marginTop: theme.spacing(2)
+    },
+    margin: {
+      margin: 5,
     }
   }));
 
@@ -35,7 +36,7 @@ function SelectComponent(props){
   }
 
   return (
-    <div >
+    <div className={classes.margin}>
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel id={`label-${id}`}>{label}</InputLabel>
         <Select
@@ -52,7 +53,7 @@ function SelectComponent(props){
   )
 }
 
-defaultProps = {
+SelectComponent.defaultProps = {
   id: "",
   label: "",
   option: [],
