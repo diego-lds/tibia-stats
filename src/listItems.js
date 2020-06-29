@@ -41,6 +41,14 @@ export const mainListItems = (
         <ListItemText primary="Players" />
       </ListItem>
     </Link>
+    <Link to="/hunts">
+      <ListItem button>
+        <ListItemIcon>
+          <AdbIcon />
+        </ListItemIcon>
+        <ListItemText primary="Hunting Places" />
+      </ListItem>
+    </Link>
   </div>
 );
 

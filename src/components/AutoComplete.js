@@ -3,7 +3,6 @@ import './AutoComplete.css';
 
 import formatterCreatureName from '../utils/formatterCreatureName';
 
-
 export default class AutoComplete extends React.Component {
   constructor(props){
     super(props);
