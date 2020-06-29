@@ -2,9 +2,7 @@ import React, {useState, useEffect} from 'react';
 import AutoComplete from '../../components/AutoComplete';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-
-import Chart from '../../components/Chart';
+import Chart from '../../components/Chart/Chart';
 
 import './LootStats.css';
 

@@ -3,7 +3,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/Menuitem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import { makeStyles } from "@material-ui/core/styles";
+import useStyles from "../useStyles";
 
 function SelectComponent(props){
   const {
@@ -12,16 +12,6 @@ function SelectComponent(props){
     options = [],
   } = props;
 
-  const useStyles = makeStyles(theme => ({
-    formControl: {
-      minWidth: 120
-    },
-    selectEmpty: {
-    },
-    margin: {
-      margin: 5,
-    }
-  }));
 
   const [selectedOption, setSelectedOptions] = React.useState(options[0]);
   const classes = useStyles();

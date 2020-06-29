@@ -1,7 +1,7 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import formatterCreatureName from '../utils/formatterCreatureName';
+import formatterCreatureName from '../../utils/formatterCreatureName';
 
 
 const parseLoot = (item, total) => ([
