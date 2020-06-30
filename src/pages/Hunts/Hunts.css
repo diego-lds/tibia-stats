@@ -1,3 +1,7 @@
-.hunts-container{
-    border: thin solid red;
+.hunts-header{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    height: fit-content;
 }
+

@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import useStyles from "../useStyles";
 
 export default function InputField(props) {
-  const { id, label } = props;
+  const { id, label, onChange } = props;
 
 
   const classes = useStyles();
@@ -12,6 +12,7 @@ export default function InputField(props) {
 
   return (
     <TextField
+      onChange={onChange}
       className={classes.margin}
       id={id}
       label={label}
