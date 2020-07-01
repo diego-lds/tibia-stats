@@ -4,7 +4,7 @@ import Select from '../../components/Select/Select';
 import Button from '@material-ui/core/Button';
 import InputField from '../../components/Input/Input'
 import { Divider } from '@material-ui/core';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import {CircularProgressComponent as CircularProgress} from '../../components/CircularProgress/CircularProgress';
 
 import './Hunts.css';
 
