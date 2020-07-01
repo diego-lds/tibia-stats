@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import InputField from '../../components/Input/Input'
 import { Divider } from '@material-ui/core';
 import {CircularProgressComponent as CircularProgress} from '../../components/CircularProgress/CircularProgress';
-
+import GridComponent from '../../components/GridComponent/GridComponent'
 import './Hunts.css';
 
 const huntUrl = "https://tibiawiki.dev/api/huntingplaces?expand=true";
@@ -15,6 +15,8 @@ const cities = ["All", "Venore", "Roshamuul", "Issavi", "Farmine", "Yalahar", "K
 function Hunts() {
 
   const [hunts, setHunts] = useState([]);
+  const [filteredHunts, setFilteredHunts] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false)
   const [vocation, setVocation] = useState(vocations[0])
   const [level, setLevel] = useState(0)
@@ -56,6 +58,7 @@ function Hunts() {
       .sort((a, b)=> b[vocationProp] - a[vocationProp])
       .slice(0, 30);
 
+      setFilteredHunts(filteredHunts)
     console.log(filteredHunts)
   };
 
@@ -90,7 +93,11 @@ function Hunts() {
       </div>
       <Divider />
       <div className="hunts-container">
-        {isLoading && <CircularProgress />}
+        {isLoading
+          ? <CircularProgress />
+          : <GridComponent
+              options={filteredHunts}
+          /> }
       </div>
     </Fragment>
   );
