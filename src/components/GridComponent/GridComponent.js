@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Grid, Paper, FormLabel, RadioGroup, FormControlLabel, Radio, makeStyles } from '@material-ui/core';
 import './GridComponent.css';
+import removeSpaces from '../../utils/removeSpaces';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -8,9 +10,8 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     display: "flex",
-    flexDirection: "column"
-
-
+    flexDirection: "column",
+    minHeight: 120,
   },
   control: {
     padding: theme.spacing(2),
@@ -40,21 +41,42 @@ export default function GridComponent(props) {
   }
 
   const renderBestLoots = option => {
-    const {bestLoot, bestLoot2, bestLoot3, bestLoot4, bestLoot5} = option;
-    return(null
-    // <span>{`Best Loots: ${}`}</span>
-    )
+    const {bestloot, bestloot2, bestloot3, bestloot4, bestloot5} = option;
+    const bestLoots = [bestloot, bestloot2, bestloot3, bestloot4, bestloot5].join(', ')
+    if(bestloot && bestloot2 && bestloot3 && bestloot4 && bestloot5){
+      return <div>
+          <span>Best Loots: </span>
+          <span className="paper-loots italic">{bestLoots}</span> 
+      </div>
+    }else{
+      return null;
+    }
   }
 
   const renderCard = option => {
+    const {name, exp, loot, city, vocation} = option 
+    
+    console.log(exp && removeSpaces(exp))
     return (
       <Grid xs={4} key={option.name} item>
         <Paper className={classes.paper} >
-            {option.name}
-            <span>{`Exp: ${option.exp} Loot: ${option.loot}`}</span>
-            {renderRecommendedLevel(option)}{/* 
-            <span>{`Cidade: ${option.city}`}</span>
-            <span>{`Vocações: ${option.vocations}`}</span> */}
+            <span className="paper-title">{option.name}</span>
+            {exp &&  (
+              <div >
+                <span>Experiência: </span>
+                <span className={`${exp && removeSpaces(exp)}`}>{exp}</span>
+              </div>
+              )}
+            {loot && (
+              <div >
+                <span>Loot: </span>
+                <span className={`${loot && removeSpaces(loot)}`}>{loot}</span>
+              </div>
+            )}
+            {renderRecommendedLevel(option)}
+            <span className="paper-city">{`Cidade: ${city}`}</span>
+            <span className="paper-vocations">{`Vocações: ${vocation}`}</span>
+            {renderBestLoots(option)}
 
         </Paper>
       </Grid>)

@@ -2,3 +2,34 @@
     display: flex;
     flex-direction: column;
 }
+
+.paper-title{
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+.paper-subtitle{
+    font-size:1em;
+}
+
+.Good{
+    color: rgb(77, 148, 77) ;
+}
+.VeryGood{
+    color: rgb(77, 148, 77) ;
+    font-weight: bold;
+}
+
+.Average{
+    color: rgb(241, 189, 91)
+}
+
+.Bad{
+    color: rgb(245, 104, 104);
+}
+
+.italic{
+    font-style: italic;
+}
+
