@@ -12,7 +12,9 @@ function Players() {
     try{
       setIsLoading(true)
       const response = await Axios(url);
-      setPlayer(response.data.characters.data)
+      if(response){
+        setPlayer(response.data.characters.data)
+      }
 
       console.log(response.data)
     } catch(e){
@@ -25,7 +27,7 @@ function Players() {
   const handleOnKeyPress = e => {
     const name = e.target.value;
     if(e.key === "Enter"){
-      fetchPlayer(name)
+      name.length > 2 && fetchPlayer(name)
     }
   }
   
@@ -40,13 +42,13 @@ function Players() {
           <div>
             {player && (
               <div style={{display: 'flex', flexDirection:'column'}}>
-                <span>Name: {player.name}</span>
-                <span>Guild: {player.guild.name}</span>
-                <span>Lvl:{player.level}</span>
-                <span>Residence: {player.residence}</span>
-                <span>Status: {player.status}</span>
-                <span>Vocation: {player.vocation}</span>
-                <span>Title: {player.title}</span>
+                <span>Name: {player.name && player.name}</span>
+                <span>Guild: {player.guild && player.guild.name}</span>
+                <span>Lvl:{player.level && player.level}</span>
+                <span>Residence: {player.residence && player.residence}</span>
+                <span>Status: {player.status && player.status}</span>
+                <span>Vocation: {player.vocation && player.vocation}</span>
+                <span>Title: {player.title && player.title}</span>
 
               </div>
             )}

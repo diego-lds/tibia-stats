@@ -9,7 +9,19 @@ const useStyles = makeStyles(theme => ({
     },
     margin: {
       margin: 10,
-    }
+    },
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      display: "flex",
+      flexDirection: "column",
+      minHeight: 120,
+    },
+    control: {
+      padding: theme.spacing(2),
+    },
   }));
 
   export default useStyles;

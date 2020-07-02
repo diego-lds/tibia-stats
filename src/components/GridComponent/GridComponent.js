@@ -2,31 +2,18 @@ import React, { useState } from 'react';
 import { Grid, Paper, FormLabel, RadioGroup, FormControlLabel, Radio, makeStyles } from '@material-ui/core';
 import './GridComponent.css';
 import removeSpaces from '../../utils/removeSpaces';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    flexDirection: "column",
-    minHeight: 120,
-  },
-  control: {
-    padding: theme.spacing(2),
-  },
-}));
+import useStyles from "./useStyles";
 
 
 export default function GridComponent(props) {
-  const { options } = props;
-
-  const [filter, setFilter] = useState("experience");
+  const { options, orderFilter } = props;
+  const [filter, setFilter] = useState("");
   const classes = useStyles();
 
-  const handleChange = (event) => {
-    setFilter(event.target.value);
+  const handleChangeFilter = (event) => {
+    setFilter(event.target.value)
+    orderFilter(event.target.value);
+
   };
 
   const renderRecommendedLevel = option => {
@@ -53,10 +40,10 @@ export default function GridComponent(props) {
     }
   }
 
+
   const renderCard = option => {
     const {name, exp, loot, city, vocation} = option 
     
-    console.log(exp && removeSpaces(exp))
     return (
       <Grid xs={4} key={option.name} item>
         <Paper className={classes.paper} >
@@ -74,55 +61,45 @@ export default function GridComponent(props) {
               </div>
             )}
             {renderRecommendedLevel(option)}
-            <span className="paper-city">{`Cidade: ${city}`}</span>
-            <span className="paper-vocations">{`Vocações: ${vocation}`}</span>
+            <span>{`Cidade: ${city}`}</span>
+            <span>{`Vocações: ${vocation}`}</span>
             {renderBestLoots(option)}
-
         </Paper>
       </Grid>)
-  }
-  console.log(options)
+
+}
   return (
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
-        {options.length > 0 && (
+        {options && options.length > 0 && (
           <Grid container>
             <Grid item>
               <RadioGroup
                 name="filter"
                 aria-label="filter"
-                value="filter"
-                onChange={handleChange}
+                value={filter}
+                onChange={handleChangeFilter}
                 row
               >
                 <FormControlLabel
                   key="experience"
-                  value="experience"
+                  value="exp"
                   control={<Radio />}
-                  label="Ordenar por XP"
-                />
+                  label="Ordenar por XP"/>
 
                 <FormControlLabel
                   key="loot"
                   value="loot"
                   control={<Radio />}
-                  label="Ordenar por Loot"
-
-                />
+                  label="Ordenar por Loot"/>
               </RadioGroup>
             </Grid>
           </Grid>
-
         )}
       </Grid>
       <Grid item xs={12}>
         <Grid container justify="center" spacing={2}>
-          {options.map(renderCard)}
-          {/* {[0, 1, 2, 3, 4, 5 , 6, 7, 8].map((value) => (
-            <Grid xs={4} key={value} item>
-              <Paper className={classes.paper} />
-            </Grid>
-          ))} */}
+          {options && options.map(renderCard)}
         </Grid>
       </Grid>
     </Grid>
