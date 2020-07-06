@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Grid, Paper, FormLabel, RadioGroup, FormControlLabel, Radio, makeStyles } from '@material-ui/core';
+import { Grid, Paper, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import './GridComponent.css';
 import removeSpaces from '../../utils/removeSpaces';
-import useStyles from "./useStyles";
+import useStyles from "../useStyles";
 
 
 export default function GridComponent(props) {
@@ -31,15 +31,15 @@ export default function GridComponent(props) {
     const {bestloot, bestloot2, bestloot3, bestloot4, bestloot5} = option;
     const bestLoots = [bestloot, bestloot2, bestloot3, bestloot4, bestloot5].join(', ')
     if(bestloot && bestloot2 && bestloot3 && bestloot4 && bestloot5){
-      return <div>
-          <span>Best Loots: </span>
-          <span className="paper-loots italic">{bestLoots}</span> 
-      </div>
+      return (
+      <div>
+        <span>Best Loots: </span>
+        <span className="paper-loots italic">{bestLoots}</span> 
+      </div>)
     }else{
       return null;
     }
   }
-
 
   const renderCard = option => {
     const {name, exp, loot, city, vocation} = option 
@@ -84,13 +84,14 @@ export default function GridComponent(props) {
                 <FormControlLabel
                   key="experience"
                   value="exp"
-                  control={<Radio />}
+                  color="primary"
+                  control={<Radio color="primary" />}
                   label="Ordenar por XP"/>
 
                 <FormControlLabel
                   key="loot"
                   value="loot"
-                  control={<Radio />}
+                  control={<Radio color="primary"/>}
                   label="Ordenar por Loot"/>
               </RadioGroup>
             </Grid>
