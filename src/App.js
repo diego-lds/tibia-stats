@@ -162,12 +162,8 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="xl" className={classes.container}>
           {myRoutes}
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={8} lg={9}>
-            </Grid>
-          </Grid>
           <Box pt={4}>
             <Copyright />
           </Box>
