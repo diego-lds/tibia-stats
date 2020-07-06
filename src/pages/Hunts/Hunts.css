@@ -1,7 +1,15 @@
+h1{
+    margin-left: 0.3em;
+}
+
 .hunts-header{
     display: flex;
     align-items: center;
-    margin: 10px;
+    margin:0
+}
+
+.initial{
+    all: initial;
 }
 
 .hunts-container {

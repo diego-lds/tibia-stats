@@ -13,6 +13,7 @@ const vocations = ["Paladin", "Knight", "Mage"]
 const cities = ["All", "Venore", "Roshamuul", "Issavi", "Farmine", "Yalahar", "Kazordoon", "Thais", "Rookgaard", "Feyrist", "Darashia", "Carlin", "Port Hope", "Edron", "Dawnport", "Gray Beach", "Liberty Bay", "Svargrond", "Rathleton", "Ankrahmun", "Ab'Dendriel", "Kilmaresh", "Darama"];
 const categories = new Map([
   ["N/I", 0],
+  ["Unknown", 0],
   ["Bad", 1],
   ["Average", 2],
   ["Good", 3],
@@ -74,6 +75,7 @@ function Hunts() {
 
   return (
     <Fragment>
+      <h1>Busca de Hunts</h1>
       <div className="hunts-header">
           <Select
             id="vocations"
