@@ -1,11 +1,11 @@
 
 import React from 'react';
-import {ListItem, ListItemIcon, ListItemText} from '@material-ui/core';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PieChartIcon from '@material-ui/icons/PieChart';
 import AdbIcon from '@material-ui/icons/Adb';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const mainListItems = (
   <div>
@@ -47,6 +47,14 @@ export const mainListItems = (
           <AdbIcon />
         </ListItemIcon>
         <ListItemText primary="Hunting Places" />
+      </ListItem>
+    </Link>
+    <Link to="/quests">
+      <ListItem button>
+        <ListItemIcon>
+          <AdbIcon />
+        </ListItemIcon>
+        <ListItemText primary="Quests" />
       </ListItem>
     </Link>
   </div>
