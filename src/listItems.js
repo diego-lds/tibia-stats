@@ -9,36 +9,12 @@ import { Link } from 'react-router-dom';
 
 export const mainListItems = (
   <div>
-    <Link to='/' >
-      <ListItem button>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary="Dashboard" />
-      </ListItem>
-    </Link>
     <Link to="/loot-stats">
       <ListItem button>
         <ListItemIcon>
           <PieChartIcon />
         </ListItemIcon>
         <ListItemText primary="Loot Stats" />
-      </ListItem>
-    </Link>
-    <Link to="/creatures">
-      <ListItem button>
-        <ListItemIcon>
-          <AdbIcon />
-        </ListItemIcon>
-        <ListItemText primary="Creatures" />
-      </ListItem>
-    </Link>
-    <Link to="/players">
-      <ListItem button>
-        <ListItemIcon>
-          <AdbIcon />
-        </ListItemIcon>
-        <ListItemText primary="Players" />
       </ListItem>
     </Link>
     <Link to="/hunts">
