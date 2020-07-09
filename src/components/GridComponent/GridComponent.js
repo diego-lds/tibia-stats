@@ -28,46 +28,46 @@ export default function GridComponent(props) {
   }
 
   const renderBestLoots = option => {
-    const {bestloot, bestloot2, bestloot3, bestloot4, bestloot5} = option;
+    const { bestloot, bestloot2, bestloot3, bestloot4, bestloot5 } = option;
     const bestLoots = [bestloot, bestloot2, bestloot3, bestloot4, bestloot5].join(', ')
-    if(bestloot && bestloot2 && bestloot3 && bestloot4 && bestloot5){
+    if (bestloot && bestloot2 && bestloot3 && bestloot4 && bestloot5) {
       return (
-      <div>
-        <span>Best Loots: </span>
-        <span className="paper-loots italic">{bestLoots}</span> 
-      </div>)
-    }else{
+        <div>
+          <span>Best Loots: </span>
+          <span className="paper-loots italic">{bestLoots}</span>
+        </div>)
+    } else {
       return null;
     }
   }
 
   const renderCard = option => {
-    const {name, exp, loot, city, vocation} = option 
-    
+    const { name, exp, loot, city, vocation } = option
+
     return (
-      <Grid xs={4} key={option.name} item>
+      <Grid xs={4} key={name} item>
         <Paper className={classes.paper} >
-            <span className="paper-title">{option.name}</span>
-            {exp &&  (
-              <div >
-                <span>Experiência: </span>
-                <span className={`${exp && removeSpaces(exp)}`}>{exp}</span>
-              </div>
-              )}
-            {loot && (
-              <div >
-                <span>Loot: </span>
-                <span className={`${loot && removeSpaces(loot)}`}>{loot}</span>
-              </div>
-            )}
-            {renderRecommendedLevel(option)}
-            <span>{`Cidade: ${city}`}</span>
-            <span>{`Vocações: ${vocation}`}</span>
-            {renderBestLoots(option)}
+          <span className="paper-title">{name}</span>
+          {exp && (
+            <div >
+              <span>Experiência: </span>
+              <span className={`${exp && removeSpaces(exp)}`}>{exp}</span>
+            </div>
+          )}
+          {loot && (
+            <div >
+              <span>Loot: </span>
+              <span className={`${loot && removeSpaces(loot)}`}>{loot}</span>
+            </div>
+          )}
+          {renderRecommendedLevel(option)}
+          <span>{`Cidade: ${city}`}</span>
+          <span>{`Vocações: ${vocation}`}</span>
+          {renderBestLoots(option)}
         </Paper>
       </Grid>)
 
-}
+  }
   return (
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
@@ -86,13 +86,13 @@ export default function GridComponent(props) {
                   value="exp"
                   color="primary"
                   control={<Radio color="primary" />}
-                  label="Ordenar por XP"/>
+                  label="Ordenar por XP" />
 
                 <FormControlLabel
                   key="loot"
                   value="loot"
-                  control={<Radio color="primary"/>}
-                  label="Ordenar por Loot"/>
+                  control={<Radio color="primary" />}
+                  label="Ordenar por Loot" />
               </RadioGroup>
             </Grid>
           </Grid>
